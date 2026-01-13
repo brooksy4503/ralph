@@ -538,9 +538,8 @@ async function main() {
     const inProgress = stories.filter((s) => String(s.status || "open").toLowerCase() === "in_progress").length;
     const open = total - done - inProgress;
     const gates = Array.isArray(prd.qualityGates) ? prd.qualityGates : [];
-    const overviewPath = resolvedPrdPath.toLowerCase().endsWith(".json")
-      ? resolvedPrdPath.replace(/\\.json$/i, ".overview.md")
-      : `${resolvedPrdPath}.overview.md`;
+    const parsed = path.parse(resolvedPrdPath);
+    const overviewPath = path.join(parsed.dir, `${parsed.name}.overview.md`);
 
     const lines = [];
     lines.push(`# PRD Overview${prd.project ? `: ${prd.project}` : ""}`);

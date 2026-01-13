@@ -13,7 +13,7 @@ function run(cmd, args, options = {}) {
   }
 }
 
-const agents = ["codex", "claude", "droid"];
+const agents = ["codex", "claude", "droid", "opencode"];
 for (const agent of agents) {
   run(process.execPath, [cliPath, "ping", `--agent=${agent}`]);
 }
